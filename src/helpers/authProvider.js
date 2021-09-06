@@ -5,7 +5,11 @@ import Cookies from "./Cookies";
 const authProvider = {
   login: ({ username, password }) => {
     const identifier = username; // strapi expects 'identifier' and not 'username'
-    const request = new Request("http://localhost:1337/auth/local", {
+    const strapUrl =
+      process.env.NODE_ENV === "production"
+        ? process.env.REACT_APP_STRAPI_URL
+        : "http://localhost:1337";
+    const request = new Request(`${strapUrl}/auth/local`, {
       method: "POST",
       body: JSON.stringify({ identifier, password }),
       headers: new Headers({ "Content-Type": "application/json" }),
