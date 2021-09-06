@@ -64,6 +64,7 @@ export const ClientEdit = (props: any) => (
   <Edit {...props}>
     <SimpleForm>
       <TextField source="id" />
+      <TextInput fullWidth source="fullname" />
       <TextInput fullWidth source="address" />
       <TextInput fullWidth source="tel" />
     </SimpleForm>

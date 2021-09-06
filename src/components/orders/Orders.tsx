@@ -56,7 +56,6 @@ export const OrderList = (props: any) => {
           <FullNameField source="fullname" />
         </ReferenceField>
         <NumberField source="nb_articles" />
-        <EditButton icon={<></>} />
         <ShowButton icon={<></>} />
       </Datagrid>
     </List>

@@ -68,7 +68,7 @@ const App = () => (
       list={OrderList}
       //edit={OrderEdit}
       show={OrderShow}
-      create={CommandeCreate}
+      //create={CommandeCreate}
       icon={TocIcon}
     />
     <Resource
