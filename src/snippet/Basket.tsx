@@ -29,6 +29,7 @@ const StyledTableRow = withStyles((theme) => ({
     },
   },
 }))(TableRow);
+
 const useStyles = makeStyles({
   rightAlignedCell: { textAlign: "right" },
 });
@@ -36,7 +37,13 @@ const useStyles = makeStyles({
 function parseData(data: any) {
   if (!data) return {};
   if (typeof data === "object") return data;
-  if (typeof data === "string") return JSON.parse(data);
+  if (typeof data === "string") {
+    try {
+      return JSON.parse(data);
+    } catch (error) {
+      return error;
+    }
+  }
 
   return {};
 }
