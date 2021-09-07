@@ -27,9 +27,9 @@ import FullNameField from "../../snippet/FullNameField";
 import { Product } from "../../types";
 import OrderDetail from "./OrderDetail";
 const postFilters = [
-  <TextInput source="q" label="Search" alwaysOn />,
+  <TextInput source="q" label="Search By Id" alwaysOn />,
   <ReferenceInput
-    source="presentant.id"
+    source="presentant"
     label="Presentant"
     reference="presentants"
     allowEmpty
