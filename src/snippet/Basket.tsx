@@ -33,10 +33,18 @@ const useStyles = makeStyles({
   rightAlignedCell: { textAlign: "right" },
 });
 
+function parseData(data: any) {
+  if (!data) return {};
+  if (typeof data === "object") return data;
+  if (typeof data === "string") return JSON.parse(data);
+
+  return {};
+}
+
 const Basket: FC<FieldProps<Order>> = ({ record }) => {
-  console.log({ recordddddd: record?.articles });
+  console.log({ recordddddd: parseData(record?.articles) });
   //const articles: { id: string; qty: string }[] = JSON.parse(record?.articles);
-  const articles: { id: string; qty: string }[] = record?.articles;
+  const articles: { id: string; qty: string }[] = parseData(record?.articles);
 
   const qty = articles.map((x) => x.qty);
   const idds = articles.map((x) => x.id);
