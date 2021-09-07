@@ -45,6 +45,7 @@ export const ClientList = (props: any) => (
         source="presentant.id"
         label="Presentant"
         reference="presentants"
+        link="show"
       >
         <FullNameField source="fullname" />
       </ReferenceField>

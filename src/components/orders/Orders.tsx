@@ -45,13 +45,19 @@ export const OrderList = (props: any) => {
     <List filters={postFilters} {...props}>
       <Datagrid rowClick="show">
         <TextField source="id" />
-        <ReferenceField source="client.id" label="client" reference="clients">
+        <ReferenceField
+          link="show"
+          source="client.id"
+          label="client"
+          reference="clients"
+        >
           <FullNameField source="fullname" />
         </ReferenceField>
         <ReferenceField
           source="presentant.id"
           label="Presentant"
           reference="presentants"
+          link="show"
         >
           <FullNameField source="fullname" />
         </ReferenceField>
