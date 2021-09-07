@@ -35,7 +35,8 @@ const useStyles = makeStyles({
 
 const Basket: FC<FieldProps<Order>> = ({ record }) => {
   console.log({ recordddddd: JSON.parse(record?.articles) });
-  const articles: { id: string; qty: string }[] = JSON.parse(record?.articles);
+  //const articles: { id: string; qty: string }[] = JSON.parse(record?.articles);
+  const articles: { id: string; qty: string }[] = record?.articles;
 
   const qty = articles.map((x) => x.qty);
   const idds = articles.map((x) => x.id);
