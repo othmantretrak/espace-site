@@ -48,13 +48,18 @@ function parseData(data: any) {
   return {};
 }
 
+export interface Cart {
+  cart: { id: string; qty: string }[];
+}
+
 const Basket: FC<FieldProps<Order>> = ({ record }) => {
   console.log({ recordddddd: parseData(record?.articles) });
   //const articles: { id: string; qty: string }[] = JSON.parse(record?.articles);
-  const articles: { id: string; qty: string }[] = parseData(record?.articles);
+  const articles: Cart = parseData(record?.articles);
+  //articles.cart.map
 
-  const qty = articles.map((x) => x.qty);
-  const idds = articles.map((x) => x.id);
+  const qty = articles.cart.map((x) => x.qty);
+  const idds = articles.cart.map((x) => x.id);
   const classes = useStyles();
 
   const { loaded, data: products } = useQueryWithStore<AppState>(
