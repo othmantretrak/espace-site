@@ -227,6 +227,7 @@ const OrderForm = ({ record }: FieldProps<Order>) => {
             <span className={classes.s_header}>s_Commercial</span>
             <span className={classes.s_body}></span>
           </div>
+
           <div className={classes.s_commercial}>
             <span className={classes.s_header}>s_Control</span>
             <span className={classes.s_body}></span>
