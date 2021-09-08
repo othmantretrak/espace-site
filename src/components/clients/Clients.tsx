@@ -39,7 +39,7 @@ export const ClientList = (props: any) => (
       <NumberField source="tel" />
 
       <TextField source="address" />
-      <DateField label="Date" source="published_at" />
+      <DateField label="Date" source="created_at" />
 
       <ReferenceField
         source="presentant.id"

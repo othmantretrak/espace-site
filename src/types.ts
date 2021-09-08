@@ -40,7 +40,7 @@ export interface Order {
   id: number;
   address?: string;
   articles: any;
-  published_at?: string;
+  created_at?: string;
   nb_articles?: number;
   ref?: string;
   client?: Client;

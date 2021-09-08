@@ -125,7 +125,7 @@ const OrderForm = ({ record }: FieldProps<Order>) => {
                   className={classes.labeldd}
                 >
                   <DateField
-                    source="published_at"
+                    source="created_at"
                     resource="commandes"
                     record={record}
                   />
