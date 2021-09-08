@@ -38,7 +38,7 @@ export const PresentantList = (props: any) => (
       <FullNameField source="fullname" />
       <NumberField source="tel" />
       <TextField source="secteur" />
-
+      <DateField label="Date" source="created_at" />
       <EditButton />
     </Datagrid>
   </List>

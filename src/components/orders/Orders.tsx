@@ -1,6 +1,6 @@
 // in src/users.js
 
-import { AutocompleteInput, Loading, useGetList } from "react-admin";
+import { AutocompleteInput, DateField, Loading, useGetList } from "react-admin";
 import {
   Show,
   ShowButton,
@@ -61,7 +61,7 @@ export const OrderList = (props: any) => {
         >
           <FullNameField source="fullname" />
         </ReferenceField>
-        <NumberField source="nb_articles" />
+        <DateField label="Date" source="created_at" />
         <ShowButton icon={<></>} />
       </Datagrid>
     </List>
