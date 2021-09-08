@@ -155,6 +155,7 @@ const OrderForm = ({ record }: FieldProps<Order>) => {
                     source="created_at"
                     resource="commandes"
                     record={record}
+                    locales="fr-FR"
                   />
                 </Labeled>
               </Grid>
@@ -205,7 +206,7 @@ const OrderForm = ({ record }: FieldProps<Order>) => {
             </Card>
           </Grid>
         </Grid>
-        <Spacer />
+
         <Box>
           <Basket record={record} />
         </Box>
