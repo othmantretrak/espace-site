@@ -39,7 +39,7 @@ const postFilters = [<TextInput source="q" label="Search" alwaysOn />];
 export const ProductList = (props: any) => {
   const classes = useStyles();
   return (
-    <List filters={postFilters} {...props}>
+    <List exporter={false} filters={postFilters} {...props}>
       <Datagrid rowClick="show">
         <TextField source="id" />
         <TextField

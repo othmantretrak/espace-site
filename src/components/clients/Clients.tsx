@@ -30,7 +30,7 @@ const postFilters = [
   </ReferenceInput>,
 ];
 export const ClientList = (props: any) => (
-  <List filters={postFilters} {...props}>
+  <List exporter={false} filters={postFilters} {...props}>
     <Datagrid rowClick="show">
       <TextField source="id" />
 

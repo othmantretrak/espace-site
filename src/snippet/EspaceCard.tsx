@@ -14,8 +14,8 @@ import HomeIcon from "@material-ui/icons/Home";
 const useStyles = makeStyles({
   root: {
     maxWidth: 345,
-
-    minHeight: "164px",
+    paddingTop: 10,
+    minHeight: "154px",
   },
   media: {
     height: 60,
@@ -39,25 +39,34 @@ const EspaceCard = () => {
         <img
           alt="Contemplative Reptile"
           height="100%"
-          src="https://res.cloudinary.com/tretrak/image/upload/v1630734739/espace_ommoho.svg"
+          src="https://res.cloudinary.com/tretrak/image/upload/v1631113898/andmacoline_vptqgh.png"
+          //src="./espace-macoline.png"
           title="Espace logo"
         />
       </div>
 
-      <CardContent>
+      <CardContent style={{ paddingBottom: "5px" }}>
         <Grid container direction="row" alignItems="center">
           <div className={classes.dd}>
             <SettingsPhoneIcon
               style={{ color: "#e70681", fontSize: "1.2rem" }}
             />
-            <Typography variant="body2" component="p">
+            <Typography
+              variant="overline"
+              style={{ lineHeight: "inherit" }}
+              component="p"
+            >
               05223-58436
             </Typography>
           </div>
 
           <div className={classes.dd}>
             <HomeIcon style={{ color: "#e70681", fontSize: "1.2rem" }} />
-            <Typography variant="body2" component="p">
+            <Typography
+              variant="overline"
+              style={{ lineHeight: "inherit" }}
+              component="p"
+            >
               Q.I OUKACHA، 13 Rue Al Haouza، Casablanca 20580
             </Typography>
           </div>

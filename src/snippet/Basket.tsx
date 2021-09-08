@@ -11,27 +11,27 @@ import { makeStyles, withStyles } from "@material-ui/core/styles";
 import { Link, FieldProps, useQueryWithStore } from "react-admin";
 
 import { AppState, Order, Product } from "../types";
-
-const StyledTableCell = withStyles((theme) => ({
-  head: {
-    backgroundColor: theme.palette.grey[500],
-    color: theme.palette.common.black,
-  },
-  body: {
-    fontSize: 14,
-  },
-}))(TableCell);
-
-const StyledTableRow = withStyles((theme) => ({
-  root: {
-    "&:nth-of-type(odd)": {
-      backgroundColor: theme.palette.action.hover,
-    },
-  },
-}))(TableRow);
+import TableOrder from "../components/orders/TableOrder";
 
 const useStyles = makeStyles({
   rightAlignedCell: { textAlign: "right" },
+  twoTable: {
+    display: "flex",
+    alignItems: "start",
+  },
+  table2: {
+    "& th": {
+      borderLeft: "none",
+    },
+    "& td": {
+      borderLeft: "none",
+    },
+  },
+  table1: {
+    "& td": {
+      //borderLeft: "none",
+    },
+  },
 });
 
 function parseData(data: any) {
@@ -53,7 +53,7 @@ export interface Cart {
 }
 
 const Basket: FC<FieldProps<Order>> = ({ record }) => {
-  console.log({ recordddddd: parseData(record?.articles) });
+  //console.log({ recordddddd: parseData(record?.articles) });
   //const articles: { id: string; qty: string }[] = JSON.parse(record?.articles);
   const articles: Cart = parseData(record?.articles);
   //articles.cart.map
@@ -88,44 +88,33 @@ const Basket: FC<FieldProps<Order>> = ({ record }) => {
   );
 
   if (!loaded || !record) return null;
+  let array1: string[] = [];
+  let array2: string[] = [];
+  if (idds.length > 10) {
+    array1 = idds.slice(0, 10);
+
+    array2 = idds.slice(10, 10 + idds.length);
+  } else {
+    array1 = idds;
+  }
 
   return (
-    <Table>
-      <TableHead>
-        <TableRow>
-          <StyledTableCell>name</StyledTableCell>
-          <StyledTableCell className={classes.rightAlignedCell}>
-            Prix
-          </StyledTableCell>
-          <StyledTableCell className={classes.rightAlignedCell}>
-            quantity
-          </StyledTableCell>
-        </TableRow>
-      </TableHead>
-      <TableBody>
-        {idds.map(
-          (item: any, index) =>
-            products[item] && (
-              <StyledTableRow key={item}>
-                <StyledTableCell>
-                  <Link to={`/products/${products[item].id}`}>
-                    {products[item].name}
-                  </Link>
-                </StyledTableCell>
-                <StyledTableCell className={classes.rightAlignedCell}>
-                  {products[item].price.toLocaleString(undefined, {
-                    style: "currency",
-                    currency: "MAD",
-                  })}
-                </StyledTableCell>
-                <StyledTableCell className={classes.rightAlignedCell}>
-                  {qty[index]}
-                </StyledTableCell>
-              </StyledTableRow>
-            )
-        )}
-      </TableBody>
-    </Table>
+    <div className={classes.twoTable}>
+      <TableOrder
+        array={array1}
+        className={classes.table1}
+        products={products}
+        qty={qty}
+      />
+      {idds.length > 10 && (
+        <TableOrder
+          className={classes.table2}
+          array={array2}
+          products={products}
+          qty={qty}
+        />
+      )}
+    </div>
   );
 };
 

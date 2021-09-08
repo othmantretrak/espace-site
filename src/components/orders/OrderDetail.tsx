@@ -63,10 +63,33 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "flex-end",
+    justifyContent: "flex-start",
     fontFamily: "Roboto, Helvetica, Arial, sans-serif",
     fontSize: "11px",
   },
+  footerOrder: {
+    display: "flex",
+    justifyContent: "space-around",
+    fontFamily: "Roboto, Helvetica, Arial, sans-serif",
+    fontSize: "14px",
+    color: "white",
+  },
+  s_commercial: {
+    height: "100px",
+    display: "flex",
+    width: "30%",
+    flexDirection: "column",
+    textAlign: "center",
+    borderTopLeftRadius: "5px",
+    borderTopRightRadius: "5px",
+    border: "1px solid cadetblue",
+  },
+  s_header: {
+    backgroundColor: "#9e9e9e",
+    //border: "1px solid",
+    flex: "1",
+  },
+  s_body: { flex: "4" },
   labeldd: {
     display: "flex",
     flexDirection: "row",
@@ -102,7 +125,11 @@ const CustomerAddress = ({ record }: { record?: Customer }) => (
       <HomeIcon
         style={{ color: "#e70681", fontSize: "1.2rem", marginRight: "5px" }}
       />
-      <Typography variant="body2" component="p">
+      <Typography
+        variant="overline"
+        style={{ lineHeight: "inherit" }}
+        component="p"
+      >
         {record?.address}
       </Typography>
     </div>
@@ -194,6 +221,20 @@ const OrderForm = ({ record }: FieldProps<Order>) => {
           >
             <CustomerLinkField />
           </ReferenceField>
+        </div>
+        <div className={classes.footerOrder}>
+          <div className={classes.s_commercial}>
+            <span className={classes.s_header}>s_Commercial</span>
+            <span className={classes.s_body}></span>
+          </div>
+          <div className={classes.s_commercial}>
+            <span className={classes.s_header}>s_Control</span>
+            <span className={classes.s_body}></span>
+          </div>
+          <div className={classes.s_commercial}>
+            <span className={classes.s_header}>Direction</span>
+            <span className={classes.s_body}></span>
+          </div>
         </div>
       </CardContent>
     </Card>

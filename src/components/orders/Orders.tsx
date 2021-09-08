@@ -42,7 +42,7 @@ export const OrderList = (props: any) => {
   console.log({ identity }); */
 
   return (
-    <List filters={postFilters} {...props}>
+    <List exporter={false} filters={postFilters} {...props}>
       <Datagrid rowClick="show">
         <TextField source="id" />
         <ReferenceField
