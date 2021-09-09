@@ -24,7 +24,7 @@ import CustomerLinkField from "../../snippet/CustomerLinkField";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    //display: "flex",
+    display: "flex",
     boxShadow: "none",
     justifyContent: "center",
   },

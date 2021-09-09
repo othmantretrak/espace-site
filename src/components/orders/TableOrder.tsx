@@ -1,8 +1,10 @@
 import { FC } from "react";
 import {
+  Paper,
   Table,
   TableBody,
   TableCell,
+  TableContainer,
   TableHead,
   TableRow,
 } from "@material-ui/core";
@@ -34,10 +36,10 @@ const useStyles = makeStyles({
   rightAlignedCell: { textAlign: "right" },
   TableCello: {
     //display: "inline-block",
-    maxWidth: "26rem",
+    /* maxWidth: "26rem",
     whiteSpace: "nowrap",
     overflow: "hidden",
-    textOverflow: "ellipsis",
+    textOverflow: "ellipsis", */
   },
 });
 
@@ -51,36 +53,38 @@ export interface Array {
 const TableOrder = ({ array, products, qty, className = "" }: Array) => {
   const classes = useStyles();
   return (
-    <Table className={className}>
-      <TableHead>
-        <TableRow>
-          <StyledTableCell>Désignation</StyledTableCell>
-          <StyledTableCell className={classes.rightAlignedCell}>
-            Quantité
-          </StyledTableCell>
-        </TableRow>
-      </TableHead>
-      <TableBody>
-        {array.map(
-          (item, index) =>
-            products[item] && (
-              <StyledTableRow key={item + index}>
-                {console.log({ products })}
+    <TableContainer component={Paper}>
+      <Table size="small" aria-label="a dense table" className={className}>
+        <TableHead>
+          <TableRow>
+            <StyledTableCell>Désignation</StyledTableCell>
+            <StyledTableCell className={classes.rightAlignedCell}>
+              Quantité
+            </StyledTableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {array.map(
+            (item, index) =>
+              products[item] && (
+                <StyledTableRow key={item + index}>
+                  {console.log({ products })}
 
-                <StyledTableCell className={classes.TableCello}>
-                  <Link to={`/products/${products[item].id}`}>
-                    {products[item].name}
-                  </Link>
-                </StyledTableCell>
+                  <StyledTableCell className={classes.TableCello}>
+                    <Link to={`/products/${products[item].id}`}>
+                      {products[item].name}
+                    </Link>
+                  </StyledTableCell>
 
-                <StyledTableCell className={classes.rightAlignedCell}>
-                  {qty[index]}
-                </StyledTableCell>
-              </StyledTableRow>
-            )
-        )}
-      </TableBody>
-    </Table>
+                  <StyledTableCell className={classes.rightAlignedCell}>
+                    {qty[index]}
+                  </StyledTableCell>
+                </StyledTableRow>
+              )
+          )}
+        </TableBody>
+      </Table>
+    </TableContainer>
   );
 };
 

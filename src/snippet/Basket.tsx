@@ -16,10 +16,12 @@ import TableOrder from "../components/orders/TableOrder";
 const useStyles = makeStyles({
   rightAlignedCell: { textAlign: "right" },
   twoTable: {
+    minWidth: 650,
     display: "flex",
     alignItems: "start",
   },
   table2: {
+    //minWidth: 650,
     "& th": {
       borderLeft: "none",
     },
