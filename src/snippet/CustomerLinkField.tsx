@@ -8,7 +8,9 @@ const CustomerLinkField: FC<FieldProps<Customer>> = (props) => {
   //console.log({ props });
 
   return props.record ? (
-    <Link to={`/presentants/${props.record.id}`}>{props.record.fullname}</Link>
+    <Link to={`/presentants/${props.record.id}/show`}>
+      {props.record.fullname}
+    </Link>
   ) : null;
 };
 

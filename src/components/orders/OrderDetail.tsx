@@ -90,6 +90,18 @@ const useStyles = makeStyles((theme) => ({
     flex: "1",
   },
   s_body: { flex: "4" },
+  ref: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    paddingTop: "10px",
+    "& div": {
+      padding: "0px",
+    },
+  },
+  gridDetail: {
+    justifyContent: "space-around",
+  },
   labeldd: {
     display: "flex",
     flexDirection: "row",
@@ -106,7 +118,7 @@ const CustomerDetails = ({ record }: { record?: Customer }) => (
     <Typography
       component={RouterLink}
       color="primary"
-      to={`/clients/${record?.id}`}
+      to={`/clients/${record?.id}/show`}
       style={{
         textDecoration: "none",
         textAlign: "center",
@@ -144,7 +156,7 @@ const OrderForm = ({ record }: FieldProps<Order>) => {
         <Grid container spacing={1}>
           <Grid item xs={6}>
             <EspaceCard />
-            <Grid container>
+            <Grid container className={classes.gridDetail}>
               <Grid item xs={4} className={classes.ddItems}>
                 <Labeled
                   label="Date"
@@ -165,7 +177,7 @@ const OrderForm = ({ record }: FieldProps<Order>) => {
                   label="Reference"
                   source="ref"
                   resource="commandes"
-                  className={classes.labeldd}
+                  className={classes.ref}
                 >
                   <TextField source="id" resource="commandes" record={record} />
                 </Labeled>
