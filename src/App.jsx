@@ -1,5 +1,5 @@
 // in src/App.js
-import * as React from "react";
+
 import {
   fetchUtils,
   Admin,
@@ -7,7 +7,10 @@ import {
   ListGuesser,
   EditGuesser,
   ShowGuesser,
+  Sidebar,
+  Layout,
 } from "react-admin";
+import { makeStyles } from "@material-ui/core/styles";
 import GroupAddIcon from "@material-ui/icons/GroupAdd";
 import TocIcon from "@material-ui/icons/Toc";
 import GroupIcon from "@material-ui/icons/Group";
@@ -16,13 +19,7 @@ import LibraryBooksIcon from "@material-ui/icons/LibraryBooks";
 import simpleRestProvider from "./ra-strapi-rest";
 import authProvider from "./helpers/authProvider";
 import Cookies from "./helpers/Cookies";
-import {
-  OrderList,
-  CommandeEdit,
-  CommandeCreate,
-  OrderShow,
-  OrderEdit,
-} from "./components/orders/Orders";
+import { OrderList, OrderShow } from "./components/orders/Orders";
 import {
   PresentantCreate,
   PresentantEdit,
@@ -41,8 +38,6 @@ import {
   ProductShow,
 } from "./components/products/Products";
 import LoginPage from "./components/LoginPage";
-import ProductDetail from "./components/products/ProductDetail";
-import OrderDetail from "./components/orders/OrderDetail";
 const uploadFields = ["image", "avatar"];
 const httpClient = (url, options = {}) => {
   if (!options.headers) {
@@ -57,8 +52,23 @@ const strapUrl =
     ? process.env.REACT_APP_STRAPI_URL
     : "http://localhost:1337";
 const dataProvider = simpleRestProvider(strapUrl, httpClient, uploadFields);
+
+const useSidebarStyles = makeStyles({
+  drawerPaper: {
+    backgroundColor: "#ece6e6",
+  },
+});
+
+const MySidebar = (props) => {
+  const classes = useSidebarStyles();
+  return <Sidebar classes={classes} {...props} />;
+};
+
+const MyLayout = (props) => <Layout {...props} sidebar={MySidebar} />;
+
 const App = () => (
   <Admin
+    layout={MyLayout}
     loginPage={LoginPage}
     authProvider={authProvider}
     dataProvider={dataProvider}
